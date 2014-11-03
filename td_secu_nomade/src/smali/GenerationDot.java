@@ -13,6 +13,6 @@ public class GenerationDot {
 	}
 	
 	public String getNextFunction(){
-		return "";
+		return "lol";
 	}
 }
