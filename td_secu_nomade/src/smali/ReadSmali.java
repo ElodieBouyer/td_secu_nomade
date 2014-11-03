@@ -1,45 +1,33 @@
 package smali;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
 public class ReadSmali {
 
-	private String text;
+	private BufferedReader buffer;
 
 	public ReadSmali(String path) {
 		super();
-		readFile(path);
+		try {
+			buffer = new BufferedReader(new FileReader(path));
+		}catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 	}
 
-	/**
-	 * Donne le contenue du fichier smali.
-	 * @return
-	 */
-	public String getText() {
-		return text;
+	public BufferedReader getBuffer() {
+		return buffer;
 	}
 
-	private void readFile(String path) {
-
-		try{
-			BufferedReader buff = new BufferedReader(new FileReader(path));
-
-			try {
-				String line;
-
-				while ((line = buff.readLine()) != null) {
-					text += line;
-				}
-			} 
-			finally {
-				buff.close();
-			}
+	public void closeBuffer() {
+		try {
+			buffer.close();
 		} 
-		catch (IOException ioe) {
-
-			System.out.println("Erreur --" + ioe.toString());
+		catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 }
