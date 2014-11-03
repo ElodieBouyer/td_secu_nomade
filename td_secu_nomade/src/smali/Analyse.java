@@ -7,7 +7,6 @@ public class Analyse {
 	
 	public Analyse(String pathToSmali) {
 		this.infoClass = new InformationClass();
-		
 	}
 	
 	
