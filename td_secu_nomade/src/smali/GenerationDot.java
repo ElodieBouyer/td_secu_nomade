@@ -1,10 +1,18 @@
 package smali;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
 public class GenerationDot {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+	private Map<String,Set<String>> calls;
+	
+	public GenerationDot(){
+		this.calls = new HashMap<String,Set<String>>();
 	}
-
+	
+	public String getNextFunction(){
+		return "";
+	}
 }
