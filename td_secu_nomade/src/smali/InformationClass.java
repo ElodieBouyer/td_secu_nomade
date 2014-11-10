@@ -39,7 +39,7 @@ public class InformationClass {
 		
 		int nb2 = 1;
 		for(InformationField f : listField) {
-			info += "  Champs " + nb + " : ";
+			info += "  Champs " + nb2 + " : ";
 			info += f.getName();
 			info += "\n";
 			info += "    Access : ";
@@ -47,7 +47,7 @@ public class InformationClass {
 			info += "\n";
 			info += "    Type : ";
 			info += f.getType();
-			nb++;
+			nb2++;
 			info += "\n \n";
 		}
 		
