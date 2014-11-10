@@ -10,6 +10,8 @@ public class SmaliAnalyse {
 
 	static private String name = ".class";
 	static private String method = ".method";
+	static private String field = ".field";
+	static private String mstatic = "static";
 
 	public SmaliAnalyse() {
 		super();
@@ -43,8 +45,19 @@ public class SmaliAnalyse {
 					String name;
 					if( line.indexOf(' ') == -1 ) name = line.substring(0,line.indexOf('('));
 					else name = line.substring(0,line.indexOf(' '));
+					if( name.equals(mstatic)) {
+						access += " ";
+						access += mstatic;
+						line = line.substring(mstatic.length()+1);
+						if( line.indexOf(' ') == -1 ) name = line.substring(0,line.indexOf('('));
+						else name = line.substring(0,line.indexOf(' '));
+					}
 					
 					this.infoClass.addMethod(name, access);
+				}
+				
+				else if( line.contains(field)) {
+					line = line.substring(method.length()+1);
 				}
 			}
 		} catch (IOException e) {
