@@ -16,6 +16,11 @@ public class ReadSmali {
 		}catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
+		try {
+			buffer.mark(0);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public BufferedReader getBuffer() {
@@ -30,4 +35,13 @@ public class ReadSmali {
 			e.printStackTrace();
 		}
 	}
+	
+	public void resetBuffer(){
+		try {
+			buffer.reset();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 }

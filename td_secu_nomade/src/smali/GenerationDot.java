@@ -53,9 +53,6 @@ public class GenerationDot {
 				if (st.hasMoreElements()){
 					mot = st.nextToken();
 					if (mot.equals(".method")){
-						//st.nextToken();
-						//currentMethod = st.nextToken();
-						//StringTokenizer tmp = new StringTokenizer(currentMethod,"(");
 						Pattern p = Pattern.compile("[a-zA-Z0-9<>]+ *\\(");
 						Matcher m = p.matcher(line);
 						if (m.find()){
