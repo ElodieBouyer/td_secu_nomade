@@ -43,14 +43,12 @@ public class SmaliAnalyse {
 
 					line = line.substring(access.length()+1);
 					String name;
-					if( line.indexOf(' ') == -1 ) name = line.substring(0,line.indexOf('('));
-					else name = line.substring(0,line.indexOf(' '));
+					name = line.substring(0,line.indexOf(')')+1);
 					if( name.equals(mstatic)) {
 						access += " ";
 						access += mstatic;
 						line = line.substring(mstatic.length()+1);
-						if( line.indexOf(' ') == -1 ) name = line.substring(0,line.indexOf('('));
-						else name = line.substring(0,line.indexOf(' '));
+						name = line.substring(0,line.indexOf(')')+1);
 					}
 					
 					this.infoClass.addMethod(name, access);
