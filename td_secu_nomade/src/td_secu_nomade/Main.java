@@ -2,12 +2,12 @@ package td_secu_nomade;
 
 import smali.ReadSmali;
 import smali.SmaliAnalyse;
+import xml.ActivitiesHandler;
 import xml.Parser;
 
 public class Main {
 
 	public static void main(String[] args) {
-		Parser parser = new Parser();
 		SmaliAnalyse smaliAnalyse = new SmaliAnalyse();
 
 		String path = null;
@@ -58,7 +58,11 @@ public class Main {
 
 		if (xml) {
 			if (activities)
-				parser.activities(path);
+				try {
+					Parser parser = new Parser(path, new ActivitiesHandler());
+				} catch (Throwable t) {
+					t.printStackTrace();
+				}
 		} else if (smali) {
 			if (info) {
 				System.out.println(smaliAnalyse.getInfo(smaliFile.getBuffer()));

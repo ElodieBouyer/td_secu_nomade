@@ -43,21 +43,30 @@ public class SmaliAnalyse {
 
 					line = line.substring(access.length()+1);
 					String name;
-					if( line.indexOf(' ') == -1 ) name = line.substring(0,line.indexOf('('));
-					else name = line.substring(0,line.indexOf(' '));
+					name = line.substring(0,line.indexOf(')')+1);
 					if( name.equals(mstatic)) {
 						access += " ";
 						access += mstatic;
 						line = line.substring(mstatic.length()+1);
-						if( line.indexOf(' ') == -1 ) name = line.substring(0,line.indexOf('('));
-						else name = line.substring(0,line.indexOf(' '));
+						name = line.substring(0,line.indexOf(')')+1);
 					}
 					
 					this.infoClass.addMethod(name, access);
 				}
 				
 				else if( line.contains(field)) {
-					line = line.substring(method.length()+1);
+					line = line.substring(field.length()+1);
+					String access = line.substring(0,line.indexOf(' '));
+					
+					line = line.substring(access.length()+1);
+					if( line.contains(mstatic) ) {
+						access += " ";
+						access += mstatic;
+						line = line.substring(mstatic.length()+1);
+					}
+					String name = line.substring(0,line.indexOf(':'));
+					String type = line.substring(line.indexOf(':')+1);
+					this.infoClass.addField(name, access, type);
 				}
 			}
 		} catch (IOException e) {
