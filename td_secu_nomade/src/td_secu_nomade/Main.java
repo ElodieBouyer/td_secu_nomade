@@ -2,8 +2,8 @@ package td_secu_nomade;
 
 import smali.ReadSmali;
 import smali.SmaliAnalyse;
-import xml.Parser;
 import xml.ActivitiesHandler;
+import xml.Parser;
 
 public class Main {
 
